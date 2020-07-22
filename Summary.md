@@ -11,6 +11,7 @@ Immutable : `tuple`, `str`, etc.
       This is guaranteed to be unique among simultaneously existing objects.
       (CPython uses the object's memory address.)
 
+아래 예시는 비슷해보이지만 다름
 
     >>> r = [1, 2]
     >>> r += [3, 4]
