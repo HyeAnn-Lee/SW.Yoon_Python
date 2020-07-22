@@ -40,6 +40,8 @@
 
 * Immutable object는 shallow copy를 해도 되지만, mutable object는 문제가 될 수 있다.
 
+* Deep copy
+
       import copy
       x = copy.copy(y)      # make a shallow copy of y
       x = copy.deepcopy(y)  # make a deep copy of y
@@ -47,3 +49,31 @@
   `deepcopy`를 쓰면 `y` 안의 immutable object는 shallow copy되고 mutable object는 deep copy된다.
 
 ## 04 List comprehension
+* Example
+
+      >>> r1 = [1, 2, 3, 4, 5]
+      >>> r2 = [x*2 for x in r1]
+      >>> r2
+      [2, 4, 6, 8, 10]
+ 
+* conditional statement
+
+
+      >>> r1 = [1, 2, 3, 4, 5]
+      >>> r2 = [x*2 for x in r1 if x%2]
+      >>> r2
+      [2, 6, 10]
+  
+* nested loop
+
+      >>> r1 = ['s', 't']
+      >>> r2 = ['1', '2', '3']
+      >>> r3 = [i+j for i in r1 for j in r2]
+      >>> r3
+      ['s1', 's2', 's3', 't1', 't2', 't3']
+
+* nested loop + conditional statement
+
+      >>> r = [n*m for n in range(2, 6) for m in range(1, 6) if (n*m)%2]
+      >>> r
+      [3, 9, 15, 5, 15, 25]
