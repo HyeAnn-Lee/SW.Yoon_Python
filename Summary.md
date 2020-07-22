@@ -5,14 +5,10 @@ Mutable : 'list', 'dict'
 
 Immutable : 'tuple', 'str'
 
-This
-
     id(obj, /)
       Return the identity of an object.
       This is guaranteed to be unique among simultaneously existing objects.
       (CPython uses the object's memory address.)
-
-or this
 
   >>> r = [1, 2]
   >>> r += [3, 4]
