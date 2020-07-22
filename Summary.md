@@ -1,8 +1,9 @@
 ## 01 Reference count와 Garbage collection
 Reference count가 0이 되면 메모리에서 없어짐
 ## 02 Mutable object와 Immutable object
-Mutable : `list`, `dict`
-Immutable : `tuple`, `str`
+Mutable : `list`, `dict`, etc.
+
+Immutable : `tuple`, `str`, etc.
 
     id(obj, /)
       Return the identity of an object.
