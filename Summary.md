@@ -3,7 +3,7 @@
 ## 02 Mutable object와 Immutable object
 * Mutable : `list`, `dict`, etc.
 
-Immutable : `tuple`, `str`, etc.
+  Immutable : `tuple`, `str`, etc.
 
 * 아래 예시는 서로 비슷해보이지만 다르다.
 
@@ -17,12 +17,12 @@ Immutable : `tuple`, `str`, etc.
         >>> s
         (1, 2, 3, 4)
 
-다음 함수를 이용하여 확인해볼 수 있다.
+  다음 함수를 이용하여 확인해볼 수 있다.
 
-    id(obj, /)
-      Return the identity of an object.
-      This is guaranteed to be unique among simultaneously existing objects.
-      (CPython uses the object's memory address.)
+      id(obj, /)
+        Return the identity of an object.
+        This is guaranteed to be unique among simultaneously existing objects.
+        (CPython uses the object's memory address.)
 
 ## 03 Deep copy와 Shallow copy
 * `is`와 `==`의 차이
