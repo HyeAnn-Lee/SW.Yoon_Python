@@ -7,13 +7,13 @@ Immutable : 'tuple', 'str'
 
 This
 
-  id(obj, /)
+    id(obj, /)
   
-    Return the identity of an object.
+      Return the identity of an object.
     
-    This is guaranteed to be unique among simultaneously existing objects.
+      This is guaranteed to be unique among simultaneously existing objects.
     
-    (CPython uses the object's memory address.)
+      (CPython uses the object's memory address.)
 
 or this
 
