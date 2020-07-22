@@ -44,6 +44,6 @@
       x = copy.copy(y)      # make a shallow copy of y
       x = copy.deepcopy(y)  # make a deep copy of y
     
-
+  `deepcopy`를 쓰면 y 안의 immutable object는 shallow copy되고 mutable object는 deep copy된다.
 
 ## 04 List comprehension
