@@ -2,6 +2,7 @@
 Reference count가 0이 되면 메모리에서 없어짐
 ## 02 Mutable object와 Immutable object
 Mutable : 'list', 'dict'
+
 Immutable : 'tuple', 'str'
 
   id(obj, /)
