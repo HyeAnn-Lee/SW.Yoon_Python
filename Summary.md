@@ -96,6 +96,7 @@
       StopIteration
 
 * special method : Python interpreter에 의해 호출되는 method
+
   ex) `__init__`, `__iter__`, `__next__`, etc.
 
       >>> l1 = [1, 2]
@@ -105,7 +106,9 @@
       >>> ir.__next()
       2
  
-* `dir([1, 2])`의 return element 중에 `__iter__` method가 있으므로 `[1, 2]`는 iterable이다. 또는, `hasattr([1, 2], '__iter__')`의 return이 `True`이므로 `[1, 2]`는 iterable이다.
+* `dir([1, 2])`의 return element 중에 `__iter__` method가 있으므로 `[1, 2]`는 iterable이다.
+
+  또는, `hasattr([1, 2], '__iter__')`의 return이 `True`이므로 `[1, 2]`는 iterable이다.
 
 * for loop에 iterable이 아닌 iterator를 둬도 정상적으로 동작한다. 왜냐하면 `iter`에 iterator를 전달하면 그 iterator를 그대로 return하기 때문이다.
 
