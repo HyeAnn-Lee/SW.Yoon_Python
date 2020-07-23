@@ -49,7 +49,7 @@
   `deepcopy`를 쓰면 `y` 안의 immutable object는 shallow copy되고 mutable object는 deep copy된다.
 
 ## 04 List comprehension
-* Example
+* example
 
       >>> r1 = [1, 2, 3, 4, 5]
       >>> r2 = [x*2 for x in r1]
@@ -77,3 +77,43 @@
       >>> r = [n*m for n in range(2, 6) for m in range(1, 6) if (n*m)%2]
       >>> r
       [3, 9, 15, 5, 15, 25]
+
+## 05 Iterable object와 Iterator object
+* Iterable object : `list`, `tuple`, `str`, etc.
+
+* `iter()`는 input으로 받은 iterable에 접근할 수 있는 iterator를 반환한다.
+
+      >>> l1 = [1, 2]
+      >>> ir = iter(l1)
+      >>> next(ir)
+      1
+      >>> next(ir)
+      2
+      >>> next(ir)
+      Traceback (most recent call last):
+        File "<pyshell#4>", line 1, in <module>
+          next(ir)
+      StopIteration
+
+* special method : Python interpreter에 의해 호출되는 method
+  ex) `__init__`, `__iter__`, `__next__`, etc.
+
+      >>> l1 = [1, 2]
+      >>> ir = l1.__iter__()
+      >>> ir.__next__()
+      1
+      >>> ir.__next()
+      2
+ 
+* `dir([1, 2])`의 return element 중에 `__iter__` method가 있으므로 `[1, 2]`는 iterable이다. 또는, `hasattr([1, 2], '__iter__')`의 return이 `True`이므로 `[1, 2]`는 iterable이다.
+
+* for loop에 iterable이 아닌 iterator를 둬도 정상적으로 동작한다. 왜냐하면 `iter`에 iterator를 전달하면 그 iterator를 그대로 return하기 때문이다.
+
+      >>> ir1 = iter([1, 2])
+      >>> ir2 = iter(ir1)
+      >>> ir1 is ir2      # ir1과 ir2는 같은 object를 reference한다.
+      True
+      >>> id(ir1) == id(ir2)
+      True
+ 
+  즉, iterable이 와야 하는 위치에는 iterator가 올 수 있다.
