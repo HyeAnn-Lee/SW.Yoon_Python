@@ -103,7 +103,7 @@
       >>> ir = l1.__iter__()
       >>> ir.__next__()
       1
-      >>> ir.__next()
+      >>> ir.__next__()
       2
  
 * `dir([1, 2])`의 return element 중에 `__iter__` method가 있으므로 `[1, 2]`는 iterable이다.
