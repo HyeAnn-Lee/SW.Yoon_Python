@@ -121,7 +121,7 @@
  
   즉, iterable이 와야 하는 위치에는 iterator가 올 수 있다.
   
-## object처럼 다뤄지는 함수 그리고 Lambda
+## 06 object처럼 다뤄지는 함수 그리고 Lambda
 
 * 매개변수에 함수를 전달할 수 있다.
       
@@ -142,7 +142,7 @@
       >>> f2(3)
       9
 
-* 이름없는 함수, lambda
+* 이름없는 함수 lambda
 
       lambda args: expression
   
