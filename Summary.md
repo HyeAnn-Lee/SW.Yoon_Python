@@ -120,3 +120,44 @@
       True
  
   즉, iterable이 와야 하는 위치에는 iterator가 올 수 있다.
+  
+## object처럼 다뤄지는 함수 그리고 Lambda
+
+* 매개변수에 함수를 전달할 수 있다.
+      
+      >>> def say():
+              print('hello')
+      >>> def caller(fun):
+              fun()
+      >>> caller(say)
+      hello
+
+* 함수 내에서 함수를 만들어서 이를 반환할 수 있다.
+      
+      >>> def fac(n):
+              def exp(x):
+                  return x ** n
+              return exp
+      >>> f2 = fac(2)
+      >>> f2(3)
+      9
+
+* 이름없는 함수, lambda
+
+      lambda args: expression
+  
+  `args`에는 매개변수 선언을, `expression`에는 함수의 body를 둔다. 예를 들어,
+  
+      >>> f1 = lambda n1, n2: n1+n2
+      >>> f1(3, 4)
+      7
+      
+      >>> f2 = lambda: print('yes')
+      >>> f2()
+      yes
+      
+      >>> def fac(n):
+              return lambda x: x**n
+      >>> f2 = fac(2)
+      >>> f2(3)
+      9
