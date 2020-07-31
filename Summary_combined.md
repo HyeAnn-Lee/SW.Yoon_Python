@@ -169,7 +169,8 @@
       class map(object)
       | map(func, *iterables) --> map object
       |
-      | Make an iterator that computes the function using arguments from each of the iterables. Stops when the shortest iterable is exhausted.
+      | Make an iterator that computes the function using arguments from each of the iterables.
+      | Stops when the shortest iterable is exhausted.
      
   map은 iterator object를 하나 반환한다.
    
@@ -206,7 +207,8 @@
       class filter(object)
       | filter(function or None, iterable) --> filter object
       |
-      | Return an iterator yielding those items of iterable for which function(item) is true. If function is None, return the items that are true.
+      | Return an iterator yielding those items of iterable for which function(item) is true.
+      | If function is None, return the items that are true.
  
   filter도 iterator object를 반환한다.
   
