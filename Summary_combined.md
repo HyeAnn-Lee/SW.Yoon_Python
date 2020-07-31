@@ -172,7 +172,7 @@
       | Make an iterator that computes the function using arguments from each of the iterables.
       | Stops when the shortest iterable is exhausted.
      
-  map은 iterator object를 하나 반환한다.
+  map은 generator object(iterator object)를 하나 반환한다.
    
       >>> def sum(n1, n2):
       >>>     return n1+n2
@@ -210,7 +210,7 @@
       | Return an iterator yielding those items of iterable for which function(item) is true.
       | If function is None, return the items that are true.
  
-  filter도 iterator object를 반환한다.
+  filter도 generator object를 반환한다.
   
       >>> def is_odd(n):
               return n%2
@@ -240,3 +240,84 @@
       >>> fst = [n**2 for n in st if n%2]
 
   로 간단히 할 수 있다.
+
+## 09 Generator function
+
+* Generator: iterator object의 한 종류. Generator를 전달하면서 next 함수를 호출하면 값을 하나씩 얻을 수 있다.
+* Generator를 만드는 두 가지 방법
+  + generator function
+  + generator expression
+  
+* generator function으로 generator 만들기: `yield`가 하나라도 들어가면 generator가 된다.
+
+      >>> def gen_num():
+              print('first number')
+              yield 1
+              print('second number')
+              yield 2
+              print('third number')
+              yield 3
+      >>> gen = gen_num()   # gen_num()이 실행되는 것이 아니라 generator object가 만들어져 return된다.
+      >>> type(gen)
+      <class 'generator'>
+      >>> next(gen)         # gen_num()의 첫 번째 문장부터 시작해서 첫 번째 yield문을 만날 때까지 실행
+      first number
+      1                     # yield가 return의 역할
+      >>> next(gen)
+      second number
+      2
+      >>> next(gen)
+      third number
+      3
+      
+  여기서 다시 next 함수를 호출하면 StopIteration exception이 발생한다.
+
+* lazy evalution: 함수 호출 이후에 그 실행의 흐름을 next 함수가 호출될 때까지 미루는(늦추는) 특성
+
+* 사용한 메모리 공간의 크기 확인
+
+      >>> import sys
+      >>> help (sys.getsizeof)
+      getsizeof(...)
+          getsizeof(object[, default]) -> int
+          Return the size of object in bytes.
+  
+ 
+* generator의 장점
+  
+      >>> def gpows(s):
+              for i in s:
+                  yield i**2
+      >>> st = gpows([1, 2, 3, 4, 5, 6, 7, 8, 9])
+      >>> for i in st:
+              print(i, end = ' ')
+      1 4 9 16 25 36 49 64 81
+      >>> import sys
+      >>> sys.getsizeof(st)
+      64
+      
+  
+  위의 예시에서, generator를 사용했기 때문에 list의 길이에 상관없이 사용하는 메모리 공간의 크기가 동일하다. Generator object는 return할 값들을 미리 만들어서 저장해 두지 않기 때문이다. 만약 generator를 쓰지 않고
+  
+      >>> def pows(s):
+              r = []
+              for i in s:
+                  r.append(i**2)
+              return r
+ 
+  으로 한다면 사용하는 메모리 공간의 크기는 list의 길이에 비례해서 늘어난다.
+
+* `yield from`
+
+      >>> def get_nums():
+              ns = [0, 1, 0, 1, 0, 1]
+              for i in ns:
+                  yield i
+   
+   는
+   
+      >>> def get_nums():
+              ns = [0, 1, 0, 1, 0, 1]
+              yield from ns
+    
+    와 같다.
