@@ -225,3 +225,18 @@
       >>> fst = list(filter(lambda n: not(n%3), map(lambda n: n**2, st)))
       >>> fst
       [9, 36, 81]
+
+## 08 map과 filter를 대신하는 list comprehension
+* map 또는 filter를 사용해야 하는 경우, 특히 map과 filter를 동시에 사용해야 하는 경우에는 list comprehension으로 대체하는 것에 대해 생각해 볼 필요가 있다. 예를 들어,
+
+      >>> st = list(range(1, 11))
+      >>> fst = list(filter(lambda n: n**2, map(lambda n: n%2, st)))
+      >>> fst
+      [1, 9, 25, 49, 81]
+  
+  는
+  
+      >>> st = list(range(1, 11))
+      >>> fst = [n**2 for n in st if n%2]
+
+  로 간단히 할 수 있다.
