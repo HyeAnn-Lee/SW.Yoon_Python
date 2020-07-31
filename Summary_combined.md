@@ -161,3 +161,65 @@
       >>> f2 = fac(2)
       >>> f2(3)
       9
+
+
+## 07 map & filter
+* `map`
+
+      class map(object)
+      | map(func, *iterables) --> map object
+      |
+      | Make an iterator that computes the function using arguments from each of the iterables. Stops when the shortest iterable is exhausted.
+     
+  map은 iterator object를 하나 반환한다.
+   
+      >>> def sum(n1, n2):
+      >>>     return n1+n2
+      >>> st1 = [1, 2, 3]
+      >>> st2 = [1, 3, 5]
+      >>> st3 = list(map(sum, st1, st2))
+      >>> st3
+      [2, 5, 8]
+
+* slicing
+
+      >>> st = [1, 2, 3, 4, 5, 6, 7, 8]
+      >>> st[:]
+      [1, 2, 3, 4, 5, 6, 7, 8]
+      >>> st[::2]
+      [1, 3, 5, 7]
+      >>> st[::-1]
+      [8, 7, 6, 5, 4, 3, 2, 1]
+      >>> s = 'hello'
+      >>> s[::-1]
+      'olleh'
+      
+* lambda + map
+
+      >>> st = ['one', 'two', 'three']
+      >>> rst = list(map(lambda s: s[::-1], st))
+      >>> rst
+      ['eno', 'owt', 'eerht']
+ 
+* `filter`
+
+      class filter(object)
+      | filter(function or None, iterable) --> filter object
+      |
+      | Return an iterator yielding those items of iterable for which function(item) is true. If function is None, return the items that are true.
+ 
+  filter도 iterator object를 반환한다.
+  
+      >>> def is_odd(n):
+              return n%2
+      >>> st = [1, 2, 3, 4, 5]
+      >>> ost = list(filter(is_odd, st))
+      >>> ost
+      [1, 3, 5]
+ 
+* map + filter
+
+      >>> st = list(range(1, 11))
+      >>> fst = list(filter(lambda n: not(n%3), map(lambda n: n**2, st)))
+      >>> fst
+      [9, 36, 81]
