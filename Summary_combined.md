@@ -402,6 +402,7 @@
       
 ## 11 Tuple packing & Tuple unpacking
 * packing & unpacking
+
   Tuple packing은 소괄호가 없어도 된다.
   
       >>> tup = 23, 12
