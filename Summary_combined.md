@@ -400,3 +400,71 @@
 
   으로, next 함수 호출 시마다 'two'가 하나씩 출력되었다는 것은 next 함수가 호출되는 순간에 던져줄 값이 만들어진 증거이다.
       
+## 11 Tuple packing & Tuple unpacking
+* packing & unpacking
+  Tuple packing은 소괄호가 없어도 된다.
+  
+      >>> tup = 23, 12
+      >>> tup
+      (23, 12)
+  
+  `*`: Tuple unpacking 과정에서 둘 이상의 값을 list로 묶어서 하나의 변수에 저장할 수 있다.
+  
+      >>> nums = (1, 2, 3, 4, 5)    # tuple이 아니라 list여도 동일하게 동작한다.
+      >>> n1, n2, *others = nums
+      >>> n1
+      1
+      >>> n2
+      2
+      >>> others
+      [3, 4, 5]                     # tuple이 아니라 list다.
+  
+* function call & return
+
+      >>> def ret_nums():
+              return 1, 2, 3, 4, 5
+      >>> nums = ret_nums()
+      >>> nums
+      (1, 2, 3, 4, 5)
+      >>> n, *others = ret_nums()
+      >>> n
+      1
+      >>> others
+      [2, 3, 4, 5]      # list다.
+      
+  parameter 앞에 `*`가 오면 '나머지 값들은 tuple로 묶어서 이 변수에 저장하겠다'는 의미이다.
+  
+      >>> def show_nums(*other, n1, n2):
+              print(other, n1, n2, sep=', ')
+      >>> show_nums(1, 2, 3, 4)
+      (1, 2), 3, 4                  # tuple이다.
+      >>> show_nums(1, 2, 3, 4, 5)
+      (1, 2, 3), 4, 5
+
+  function call에서 `*`가 사용되면 tuple unpacking으로 이어진다.
+  
+      >>> def show_man(name, age, height):
+              print(name, age, height, sep=', ')
+      >>> p = ('Yoon', 22, 180)       # tuple이 아니라 list여도 동일하게 동작한다.
+      >>> show_man(*p)
+      Yoon, 22, 180
+      
+* tuple 안에 tuple이 있을 때는 tuple 안의 값의 구조와 동일한 형태로 변수를 선언한 후 unpacking
+
+      >>> t = (1, 2, (3, 4))
+      >>> a, b, (c, d) = t
+      >>> print(a, b, c, d, sep=', ')
+      1, 2, 3, 4
+      
+* for-loop에서의 unpacking
+
+      >>> ps = [('Lee', M, 172, 26), ('Jung', F, 182, 55), ('Yoon', M, 179, 32)]  # list 안의 tuple
+      >>> for n, _, h, _ in ps:
+              print(n, h, sep=', ')
+      
+      Lee, 172
+      Jung, 182
+      Yoon, 179
+  
+  list 안의 list, tuple 안의 tuple, tuple 안의 list에 대해서도 동일하게 작동한다.
+  
