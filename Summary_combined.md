@@ -110,6 +110,21 @@
 
   또는, `hasattr([1, 2], '__iter__')`의 return이 `True`이므로 [1, 2]는 iterable이다.
 
+* 다음 코드는,
+
+      for i in [1, 2, 3]:
+          do something
+   
+  내부적으로 다음과 같은 형태로 동작한다.
+  
+      ir = iter([1, 2, 3])
+      while True:
+          try:
+              i = next(ir)
+              do something
+          except StopIteration:
+              break
+
 * for loop에 iterable이 아닌 iterator를 둬도 정상적으로 동작한다. 왜냐하면 `iter`에 iterator를 전달하면 그 iterator를 그대로 return하기 때문이다.
 
       >>> ir1 = iter([1, 2])
