@@ -591,3 +591,66 @@
       >>> d
       {'a': 1, 'c': 3}
       
+## 15 function call과 parameter declaration에 있어서 *와 **의 사용 규칙
+* function call
+
+  object를 전달하는 과정에서 unpacking이 진행되는 상황
+
+  + `func(*iterable)`
+    
+    list, tuple, str 등의 iterable object을 풀어서 전달
+    
+        >>> def who(a, b, c):
+                print(a, b, c, sep = ', ')
+
+        >>> who(*[1, 2, 3])
+        1, 2, 3
+        >>> who(*'abc')
+        a, b, c
+      
+  + `func(**dict)`
+    
+    dict의 value를 풀어서 전달
+    
+        >>> def who(a, b, c):
+                print(a, b, c, sep = ', ')
+        
+        >>> d = dict(a = 1, b = 2, c = 3)
+        >>> who(*d)             # key가 parameter에 전달됨
+        a, b, c
+        >>> who(**d)            # value가 parameter에 전달됨
+        1, 2, 3
+        >>> who(*(d.items()))
+        ('a', 1), ('b', 2), ('c', 3)
+        
+* function definition
+
+  + `def func(*args)`
+    
+    값이 tuple로 묶여서 `args`에 전달된다.
+    
+        >>> def func(*args):
+                print(args)   # args는 tuple
+        
+        >>> func()            # ()가 전달됨
+        ()
+        >>> func(1)           # (1,)이 전달됨
+        (1,)
+        >>> func(1, 2)        # (1, 2)가 전달됨
+        (1, 2)
+        >>> func(1, 2, 3)
+        (1, 2, 3)
+   
+  + `def func(**args)`
+    
+    내용이 dictionary로 묶여서 `args`에 전달된다.
+    
+    즉, 이는 dictionary의 생성으로 이어지며, 이 dictionary를 구성할 key와 value의 정보를 `key = value`의 형태로 전달해야 한다.
+    
+        >>> def func(*args):
+                print(args)   # args는 dictionary
+        
+        >>> func(a = 1)         # {'a' = 1}가 생성되어 args에 전달
+        {'a' = 1}
+        >>> func(a = 1, b = 2)  # {'a' = 1, 'b' = 2}가 생성되어 args에 전달
+        {'a' = 1, 'b' = 2}
